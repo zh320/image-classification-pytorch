@@ -95,7 +95,81 @@ CUDA_VISIBLE_DEVICES=0,1,2,3 python main.py
 
 # Performances
 
-Coming
+## CIFAR10
+
+|	Model		|	pretrained		|	kd				|	mixup	|	Epoch	|	Accuracy(%)	        |
+|---------------|-------------------|-------------------|-----------|-----------|-----------------------|
+|	ResNet50	|					|					|	1.0		|	200		|	95.99               |
+|	ResNet50	|					|					|	1.0		|	400		|	96.62 (teacher)     |
+|	ResNet18	|					|					|	1.0		|	200		|	95.34 (base)        |
+|	ResNet18	|					|					|	0.0		|	200		|	94.25 :arrow_down:	|
+|	ResNet18	|					|					|	0.5		|	200		|	95.08 :arrow_down:	|
+|	ResNet18	|:white_check_mark:	|					|	1.0		|	200		|	95.91 :arrow_up:	|
+|	ResNet18	|:white_check_mark:	|					|	1.0		|	400		|	95.95 :arrow_up:	|
+|	ResNet18	|					|:white_check_mark:	|	1.0		|	200		|	95.69 :arrow_up:	|
+|	ResNet18	|					|					|	1.0		|	400		|	96.03 :arrow_up:	|
+|	ResNet18	|					|:white_check_mark:	|	1.0		|	400		|	96.12 :arrow_up:	|
+|	MobileNetv2	|					|					|	1.0		|	200		|	94.88 (base)        |
+|	MobileNetv2	|:white_check_mark:	|					|	1.0		|	200		|	95.21 :arrow_up:	|
+|	MobileNetv2	|:white_check_mark:	|					|	1.0		|	400		|	95.37 :arrow_up:	|
+|	MobileNetv2	|					|:white_check_mark:	|	1.0		|	200		|	94.83 :arrow_down:	|
+|	MobileNetv2	|					|					|	1.0		|	400		|	95.29 :arrow_up:	|
+|	MobileNetv2	|					|:white_check_mark:	|	1.0		|	400		|	95.12 :arrow_up:	|
+
+
+## CIFAR100
+
+|	Model		|	pretrained		|	kd				|	mixup	|	Epoch	|	Accuracy(%)	        |
+|---------------|-------------------|-------------------|-----------|-----------|-----------------------|
+|	ResNet50	|					|					|	1.0		|	400		|	79.52 (teacher)     |
+|	ResNet18	|					|					|	1.0		|	200		|	75.68 (base)        |
+|	ResNet18	|:white_check_mark:	|					|	1.0		|	200		|	78.89 :arrow_up:	|
+|	ResNet18	|:white_check_mark:	|					|	1.0		|	400		|	78.56 :arrow_down:	|
+|	ResNet18	|					|:white_check_mark:	|	1.0		|	200		|	75.82 :arrow_up:	|
+|	ResNet18	|					|					|	1.0		|	400		|	76.53 :arrow_up:	|
+|	ResNet18	|					|:white_check_mark:	|	1.0		|	400		|	76.85 :arrow_up:	|
+|	MobileNetv2	|					|					|	1.0		|	200		|	76.90 (base)        |
+|	MobileNetv2	|:white_check_mark:	|					|	1.0		|	200		|	78.41 :arrow_up:	|
+|	MobileNetv2	|:white_check_mark:	|					|	1.0		|	400		|	78.37 :arrow_down:	|
+|	MobileNetv2	|					|:white_check_mark:	|	1.0		|	200		|	76.81 :arrow_down:	|
+|	MobileNetv2	|					|					|	1.0		|	400		|	77.30 :arrow_up:	|
+|	MobileNetv2	|					|:white_check_mark:	|	1.0		|	400		|	77.85 :arrow_up:	|
+
+
+## MNIST
+
+|	Model		|	pretrained		|	h_flip	|	mixup	|	Epoch	|	Accuracy(%)			|
+|---------------|-------------------|-----------|-----------|-----------|-----------------------|
+|	ResNet18	|					|	0.5		|	1.0		|	200		|	99.65 (base)        |
+|	ResNet18	|					|	0.0		|	1.0		|	200		|	99.65 				|
+|	ResNet18	|:white_check_mark:	|	0.0		|	1.0		|	200		|	99.65				|
+|	ResNet18	|:white_check_mark:	|	0.5		|	1.0		|	200		|	99.68 :arrow_up:	|
+|	ResNet18	|					|	0.0		|	1.0		|	400		|	99.67 :arrow_up:	|
+|	ResNet18	|					|	0.5		|	1.0		|	400		|	99.69 :arrow_up:	|
+|	MobileNetv2	|					|	0.5		|	1.0		|	200		|	99.67 (base)        |
+|	MobileNetv2	|					|	0.0		|	1.0		|	200		|	99.64 :arrow_down:	|
+|	MobileNetv2	|:white_check_mark:	|	0.0		|	1.0		|	200		|	99.68 :arrow_up:	|
+|	MobileNetv2	|:white_check_mark:	|	0.5		|	1.0		|	200		|	99.62 :arrow_down:	|
+|	MobileNetv2	|					|	0.0		|	1.0		|	400		|	99.64 :arrow_down:	|
+|	MobileNetv2	|					|	0.5		|	1.0		|	400		|	99.65 :arrow_down:	|
+
+
+## Fashion-MNIST
+
+|	Model		|	pretrained		|	h_flip	|	mixup	|	Epoch	|	Accuracy(%)			|
+|---------------|-------------------|-----------|-----------|-----------|-----------------------|
+|	ResNet18	|					|	0.5		|	1.0		|	200		|	94.33 (base)        |
+|	ResNet18	|					|	0.0		|	1.0		|	200		|	94.30 :arrow_down:	|
+|	ResNet18	|:white_check_mark:	|	0.0		|	1.0		|	200		|	94.59 :arrow_up:	|
+|	ResNet18	|:white_check_mark:	|	0.5		|	1.0		|	200		|	94.55 :arrow_up:	|
+|	ResNet18	|					|	0.0		|	1.0		|	400		|	94.20 :arrow_down:	|
+|	ResNet18	|					|	0.5		|	1.0		|	400		|	94.41 :arrow_up:	|
+|	MobileNetv2	|					|	0.5		|	1.0		|	200		|	94.81 (base)        |
+|	MobileNetv2	|					|	0.0		|	1.0		|	200		|	94.96 :arrow_up:	|
+|	MobileNetv2	|:white_check_mark:	|	0.0		|	1.0		|	200		|	95.28 :arrow_up:	|
+|	MobileNetv2	|:white_check_mark:	|	0.5		|	1.0		|	200		|	95.20 :arrow_up:	|
+|	MobileNetv2	|					|	0.0		|	1.0		|	400		|	95.05 :arrow_up:	|
+|	MobileNetv2	|					|	0.5		|	1.0		|	400		|	95.21 :arrow_up:	|
 
 
 
