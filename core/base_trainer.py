@@ -30,7 +30,8 @@ class BaseTrainer:
         self.scaler = amp.GradScaler(enabled=config.amp_training)
 
         # Create directory to save checkpoints and logs
-        mkdir(config.save_dir)
+        if self.main_rank:
+            mkdir(config.save_dir)
 
         # Set random seed to obtain reproducible results
         set_seed(config.random_seed)
@@ -103,11 +104,20 @@ class BaseTrainer:
             self.writer.flush()
             self.writer.close()
 
+        # Wait for main rank to save the checkpoint
+        if config.DDP:
+            torch.distributed.barrier()
+
         # Validate for the best model
         if config.save_ckpt:
-            self.val_best(config)
+            best_score = self.val_best(config)
 
         destroy_ddp_process(config)
+
+        if config.save_ckpt:
+            return best_score
+        else:
+            return self.best_score
 
     def parallel_model(self, config):
         self.model = parallel_model(config, self.model, self.local_rank, self.device)
@@ -184,3 +194,5 @@ class BaseTrainer:
 
         if self.main_rank:
             self.logger.info(f'Best validation score is {val_score}.\n')
+
+        return val_score

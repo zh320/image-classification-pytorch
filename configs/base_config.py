@@ -1,3 +1,6 @@
+import os
+
+
 class BaseConfig:
     def __init__(self,):
         # Dataset
@@ -75,6 +78,9 @@ class BaseConfig:
 
         # DDP
         self.synBN = False
+        self.destroy_ddp_process = True
+        self.local_rank = int(os.getenv('LOCAL_RANK', -1))
+        self.main_rank = self.local_rank in [-1, 0]
 
         # Knowledge Distillation
         self.kd_training = False
@@ -93,7 +99,8 @@ class BaseConfig:
 
         num_class_hub = {'cifar10':10, 'cifar100':100, 'fashion_mnist':10, 'mnist':10}
         if self.dataset in num_class_hub.keys():
-            print(f'Override num_class from {self.num_class} to {num_class_hub[self.dataset]}.\n')
+            if self.main_rank:
+                print(f'Override num_class from {self.num_class} to {num_class_hub[self.dataset]}.\n')
             self.num_class = num_class_hub[self.dataset]
 
         if self.num_class is None:
@@ -111,12 +118,14 @@ class BaseConfig:
             if self.dataset in pad_size_hub:
                 self.pad_size = pad_size_hub[self.dataset]
             else:
-                print(f'Dataset: {self.dataset} does not have default `pad_size`. It will be assigned `0`.\n')
+                if self.main_rank:
+                    print(f'Dataset: {self.dataset} does not have default `pad_size`. It will be assigned `0`.\n')
                 self.pad_size = 0
         assert self.pad_size < self.img_size
 
         if self.is_testing:
-            print(f'Override dataset from `{self.dataset}` to `test` in test mode.\n')
+            if self.main_rank:
+                print(f'Override dataset from `{self.dataset}` to `test` in test mode.\n')
             self.dataset = 'test'
 
             if self.class_map is None:

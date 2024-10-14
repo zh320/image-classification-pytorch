@@ -1,0 +1,17 @@
+{
+ "params": {
+  "optimizer": "sgd",
+  "base_lr": 0.03964711201594095,
+  "pretrained": true,
+  "use_ema": false,
+  "mixup": 0.45229674576838585,
+  "brightness": 0.25523877058465505,
+  "contrast": 0.3343953222963411,
+  "saturation": 0.08313276422039308,
+  "h_flip": 0.36218117748002265
+ },
+ "value": 0.9638999700546265,
+ "finished_trials": 100,
+ "pruned_trials": 59,
+ "completed_trials": 41
+}
