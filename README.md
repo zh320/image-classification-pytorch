@@ -136,7 +136,7 @@ CUDA_VISIBLE_DEVICES=0,1,2,3 python main.py
 | MobileNetv2 |                    | :white_check_mark: |                    | 1.0   | 200   | 76.81 :arrow_down:                                           |
 | MobileNetv2 |                    |                    |                    | 1.0   | 400   | 77.30 :arrow_up:                                             |
 | MobileNetv2 |                    | :white_check_mark: |                    | 1.0   | 400   | 77.85 :arrow_up:                                             |
-| MobileNetv2 | -                  | -                  | :white_check_mark: | -     | 100   | [82.01](optuna_results/cifar100_mobilebetv2.json) :arrow_up: |
+| MobileNetv2 | -                  | -                  | :white_check_mark: | -     | 100   | [82.01](optuna_results/cifar100_mobilenetv2.json) :arrow_up: |
 
 ## MNIST
 
