@@ -53,7 +53,7 @@ Since most timm models are downsampled 32 times, to retain more details and gain
 
 - [Custom](datasets/custom_dataset.py)  
   
-  If you want to test other datasets from torchvision, you may refer to this [site](https://pytorch.org/vision/0.9/). Noted that this site is outdated since the version of torchvision(0.9.1) is bounded to torch(1.8.1). If you want to test datasets from newer version of torchvision, you need to update this codebase to be compatible with newer torch. You can also download the image files and build your own dataset following the style of `Custom` dataset if you don't want to update the codebase.  
+If you want to test other datasets from torchvision, you may refer to this [site](https://pytorch.org/vision/0.9/). Noted that this site is outdated since the version of torchvision(0.9.1) is bounded to torch(1.8.1). If you want to test datasets from newer version of torchvision, you need to update this codebase to be compatible with newer torch. You can also download the image files and build your own dataset following the style of `Custom` dataset if you don't want to update the codebase.  
 
 [^cifar]: [The CIFAR-10 dataset](https://www.cs.toronto.edu/~kriz/cifar.html)  
 [^mnist]: [The MNIST database of handwritten digits](https://yann.lecun.com/exdb/mnist/)  
