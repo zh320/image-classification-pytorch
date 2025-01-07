@@ -104,7 +104,7 @@ class BaseConfig:
             self.num_class = num_class_hub[self.dataset]
 
         if self.num_class is None:
-            raise ValueError(f'Please give the value of `num_class` for dataset: {config.dataset}\n')
+            raise ValueError(f'Please give the value of `num_class` for dataset: {self.dataset}\n')
 
         if self.img_size is None:
             img_size_hub = {'cifar10':32, 'cifar100':32, 'fashion_mnist':28, 'mnist':28, 'custom':224}
